@@ -2,40 +2,131 @@
 
 
 
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
 
-
-<div class=" container">
-
-    <div class="row"> 
-        @foreach (var imagePath in Model)
-        {
-            <div class="col-md-3">
-                <div class="alert alert-success" role="alert">
-                    <img src="~/uploads/@imagePath" alt="Image" height="100px" width="205px" />
-
-                    <!--   
-                        <a href="/Gallery/DownloadFile/?filePath=@imagePath"><i class="fa fa-download" aria-hidden="true"></i></a> |
-                    -->
-                    <a href="/Gallery/DeleteFile/?filePath=@imagePath">@* <i class="fa fa-trash" aria-hidden="true"> </i>*@ delet</a>
-                </div>
-
+                <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 9;">
+                    <div class="navbar-nav w-100">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">Web Design <i class="fa fa-angle-down float-right mt-1"></i></a>
+                            <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                                <a href="" class="dropdown-item">HTML</a>
+                                <a href="" class="dropdown-item">CSS</a>
+                                <a href="" class="dropdown-item">jQuery</a>
+                            </div>
+                        </div>
+                        <a href="" class="nav-item nav-link">Apps Design</a>
+                        <a href="" class="nav-item nav-link">Marketing</a>
+                        <a href="" class="nav-item nav-link">Research</a>
+                        <a href="" class="nav-item nav-link">SEO</a>
+                    </div>
+                </nav>
             </div>
-        }
-    </div>
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0"><span class="text-primary">The</span>Hopeage</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav py-0">
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" asp-controller="Home" asp-action="Mission">Mission</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="MissionVision">Mission & Vision</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="History">Our History</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Team">Our Team</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Management">Management</a>
+                                </div>
+                            </div>
 
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Services">Services</a>
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Activities">Activities</a>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" asp-controller="Home" asp-action="Gallery">Gallery</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a class="dropdown-item active" asp-controller="Home" asp-action="Image">Image Gallery</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Video">Video Gallery</a>
+                                </div>
+                            </div>
 
-
-
-
-    @using (Html.BeginForm("Index", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div class=" row">
-            <div class="form-group col-md-6">
-                <input type="file" class="form-control" name="myfile" />
-            </div>
-            <div class="form-group col-md-6">
-                <input type="submit" value="Upload" name="filesubmit" />
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </div>
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">Contribution</a>
+                    </div>
+                </nav>
             </div>
         </div>
-    }
+    </div>
+    <!-- Navbar End -->
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">Gallery</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Gallery</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-5">
+
+            <h1>Our Top Mission</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                @foreach (var imagePath in Model)
+                {
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2 " >
+                        <img class="img-fluid" src="~/uploads/@imagePath" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+
+                        </a>
+                    </div>
+                    <div class="text-center py-4">
+                       @*  <a asp-controller="Photo" asp-action="Edit" class="h6 text-decoration-none text-truncate">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a> *@
+                        <a href="/Gallery/DeleteFile/?filePath=@imagePath" class="h6 text-decoration-none text-truncate pl-2">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">=
+                <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                    @using (Html.BeginForm("Index", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class=" row">
+                            <div class="form-group col-md-6">
+                                <input type="file" class="form-control" name="myfile" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="submit" value="Upload" name="filesubmit" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
+    </div>
 </div>
